@@ -64,19 +64,17 @@ void imprimir(char *cadena, int nueva_linea, int por_pantalla, char *ruta) {
 	if (por_pantalla == 1) {
 		FILE *archivo;
 		archivo = fopen(ruta, "w");
-		if (nueva_linea == 1)
+		if (archivo == NULL) {
+			printf("La opcion '-o' requiere que se especifique una ruta a la que se pueda acceder para escritura.\n");
+		} else {
 			fputs(cadena, archivo);
-		else {
-			fputs(cadena, archivo);
-			fputs("\n", archivo);
+			if (nueva_linea == 0) fputs("\n", archivo);
+			fclose(archivo);
 		}
-		fclose(archivo);
 	}
 	else {
-		if (nueva_linea == 1)
-			printf("%s", cadena);
-		else
-			printf("%s\n", cadena);
+		printf("%s", cadena);
+		if (nueva_linea == 0) printf("\n");
 	}
 	return;
 }
