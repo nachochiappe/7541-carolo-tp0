@@ -19,11 +19,13 @@
 #include <string.h>
 #include <stdio.h>
 
+#define MAX_CADENA 255
+
 /*
  * Invierte el orden de los caracteres de una cadena pasada por parámetro
  */
 void invierte(char *cadena) {
-	char cadena_tmp[255]="";
+	char cadena_tmp[MAX_CADENA]="";
 	strcpy(cadena_tmp,cadena);
 	int j = strlen(cadena) - 1;
 	for (int i = 0; i < strlen(cadena_tmp); i++) {
@@ -85,7 +87,7 @@ void imprimir(char *cadena, int nueva_linea, int por_pantalla, char *ruta) {
 int main (int argc, char *argv[]) {
 	int nueva_linea = 0;
 	int por_pantalla = 0;
-	char ruta[255]="";
+	char ruta[MAX_CADENA]="";
 	if (argc == 1)
 		printf("Debe ingresar texto a imprimir.\n");
 	else if (argc == 2) {
